@@ -74,6 +74,14 @@ const MyGoalActions = ({ goal, open }: { open: boolean; goal: GoalItem }) => {
     }
   };
 
+  const gridStyle = () => {
+    let count = 1;
+    if (!isPartnerGoal) count += 1;
+    if ((isPartnerGoal && goal.parentGoalId === "root") || !isPartnerGoal) count += 1;
+    count += 1;
+    return count >= 4 ? { gridTemplateColumns: "repeat(2, 1fr)" } : { gridTemplateColumns: "1fr" };
+  };
+
   return (
     <Modal
       open={open}
@@ -100,7 +108,7 @@ const MyGoalActions = ({ goal, open }: { open: boolean; goal: GoalItem }) => {
           {goal.title}
         </p>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+      <div className="grid-container" style={gridStyle()}>
         {confirmationAction && <ConfirmationModal action={confirmationAction} handleClick={handleActionClick} />}
         <div
           className="goal-action shareOptions-btn"

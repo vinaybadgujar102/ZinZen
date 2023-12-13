@@ -4,6 +4,14 @@
     border: none !important;
     border-radius: 28px !important;
   }
+
+  .grid-container {
+    display: grid;
+    gap: 2px;
+    background-color: var(--default-border-color); 
+    border-radius: 0 0 28px 28px;
+    overflow: hidden;
+  }
   .goal-action {
     width: unset !important;
     border: none;
@@ -11,20 +19,18 @@
     cursor: pointer;
     background: var(--bottom-nav-color) !important;
   }
-  .goal-action:first-child {
-    border-right: 2px solid var(--default-border-color);
-    border-bottom: 2px solid var(--default-border-color);
+  .grid-container > :last-child:nth-last-child(odd) {
+    border-radius: 0 0 28px 28px;
   }
-  .goal-action:nth-child(2) {
-    border-bottom: 2px solid var(--default-border-color);
+  
+  .grid-container > :nth-last-child(2):nth-last-child(even) {
+    border-bottom-left-radius: 28px;
   }
-  .goal-action:nth-child(3) {
-    border-right: 2px solid var(--default-border-color);
-    border-radius: 0 0 0 28px !important;
+  
+  .grid-container > :last-child:nth-last-child(even) {
+    border-bottom-right-radius: 28px;
   }
-  .goal-action:last-child {
-    border-radius: 0 0 28px 0 !important;
-  }
+  
   div {
     text-align: center;
     p {
