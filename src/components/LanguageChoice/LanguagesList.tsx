@@ -36,9 +36,13 @@ export const LanguagesList = ({ languages, navigationCallback, type, hideSelecte
   return (
     <div className="containerLang">
       {languages.map((lang: ILanguage, index: number) => (
-        <div onMouseDown={(e) => handleClick(e, lang.langId)}>
+        <button
+          key={lang.sno}
+          type="button"
+          className={type === "modal" ? "languageListButton" : undefined}
+          onMouseDown={(e) => handleClick(e, lang.langId)}
+        >
           <label
-            key={lang.sno}
             ref={(ref) => {
               labelRefs.current[index] = ref!;
             }}
@@ -48,7 +52,7 @@ export const LanguagesList = ({ languages, navigationCallback, type, hideSelecte
             {lang.title}
             <input type="radio" checked={lang.selected} readOnly id={lang.sno.toString()} />
           </label>
-        </div>
+        </button>
       ))}
     </div>
   );
